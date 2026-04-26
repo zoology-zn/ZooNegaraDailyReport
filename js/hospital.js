@@ -317,7 +317,7 @@ function submitReport() {
 
         console.log("📋 Data yang dihantar:", reportData); // ✅ SEE WHAT YOU'RE SENDING
             
-fetch("https://script.google.com/macros/s/AKfycby-fpiJABTECjZQm5qwCmHNUdPXRkWLWCJZdWaMf__iTZZ4pwFxDDhdpnaP4aIv4A3mOw/exec", {
+fetch("https://script.google.com/macros/s/AKfycbw6wZPeiRtH92pgt_Lry-vjhvxRi_UumvR6RbTwcSc8xbitra-JMRmoUg2bkixhjKozTA/exec", {
     method: "POST",
     body: JSON.stringify(reportData)
 })
