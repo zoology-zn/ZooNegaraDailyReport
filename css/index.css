@@ -1,0 +1,392 @@
+<style>
+    /* ============================================
+       1. RESET & BASE STYLES
+       ============================================ */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .main-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* ============================================
+       2. HEADER SECTION
+       ============================================ */
+    .header {
+      text-align: center;
+      padding: 15px 0;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #b8860b, #daa520);
+      border-radius: 12px;
+      color: white;
+      box-shadow: 0 4px 12px rgba(184, 134, 11, 0.2);
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .header p {
+      margin: 5px 0 0;
+      font-size: 18px;
+      font-weight: 500;
+      opacity: 0.95;
+    }
+
+    /* ============================================
+       3. TYPOGRAPHY
+       ============================================ */
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0 0 16px 0;
+      color: #b8860b;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #f4c542;
+    }
+
+    h3 {
+      margin-top: 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #2c3e50;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 14px;
+      display: block;
+      margin-bottom: 6px;
+      color: #2c3e50;
+    }
+
+    /* ============================================
+       4. LAYOUT UTILITIES
+       ============================================ */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .span-2-desktop {
+        grid-column: span 2;
+      }
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      flex-wrap: wrap;
+    }
+
+    .checkbox-group label {
+      margin: 0;
+      display: inline;
+    }
+
+    /* ============================================
+       5. CARDS & CONTAINERS
+       ============================================ */
+    .big-card {
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 12px;
+      border-left: 8px solid #b8860b;
+      background: #fffdf5;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .big-card:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      border-left: 6px solid #f4c542;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      background: white;
+    }
+
+    /* ============================================
+       6. FORM INPUTS & CONTROLS
+       ============================================ */
+    input[type="text"],
+    input[type="date"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      background-color: #fff;
+      font-family: inherit;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    input[type="number"]:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #b8860b;
+      box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: #b8860b;
+    }
+
+    .kerjaInput {
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+    }
+
+    /* ============================================
+       7. TABLE STYLES
+       ============================================ */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    th,
+    td {
+      padding: 12px 8px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: #f9f9f9;
+      font-weight: 600;
+      font-size: 13px;
+      color: #2c3e50;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      text-align: center;
+      width: 120px;
+    }
+
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    #staffTableDiv table td:first-child {
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    /* ROW COLOR STATUS */
+    .row-complete {
+      background-color: #d4edda !important;
+    }
+
+    .row-incomplete {
+      background-color: #fff3cd !important;
+    }
+
+    .kerjaTable th {
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    /* ============================================
+       8. BUTTONS
+       ============================================ */
+    .add-btn-soft {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      background: linear-gradient(135deg, #d9ead3, #f6e6b4);
+      color: #2f3b2f;
+      border: 1px solid #cfe3c9;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .add-btn-soft:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(135deg, #cfe9c8, #f3e1a6);
+    }
+
+    .add-btn-soft:active {
+      transform: scale(0.98);
+    }
+
+    @media (min-width: 600px) {
+      .add-btn-soft {
+        width: auto;
+        padding: 10px 20px;
+      }
+    }
+
+    .submit-btn-green {
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #a8d5a2, #7fbf7f);
+      color: #1f2d1f;
+      border: 1px solid #7fbf7f;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      max-width: 300px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(127, 191, 127, 0.2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .submit-btn-green:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(127, 191, 127, 0.35);
+      background: linear-gradient(135deg, #9fd09a, #74b774);
+    }
+
+    .submit-btn-green:active {
+      transform: scale(0.98);
+    }
+
+    .submit-btn-green.confirm {
+      background: linear-gradient(135deg, #7fbf7f, #6ba86f);
+    }
+
+    .submit-center {
+      text-align: center;
+      padding: 30px 0 50px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    /* ENTRY CARDS STYLING */
+    .entry-card {
+      margin-bottom: 15px;
+      padding: 15px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      gap: 10px;
+    }
+
+    .delete-btn {
+      background: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 6px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+
+    .delete-btn:hover {
+      background: #ff3333;
+    }
+
+    /* ============================================
+       9. RESPONSIVE DESIGN
+       ============================================ */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 28px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      th:nth-child(2),
+      td:nth-child(2) {
+        width: auto;
+      }
+
+      .submit-btn-green {
+        padding: 12px 24px;
+        font-size: 14px;
+      }
+    }
+
+  </style>
