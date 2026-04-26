@@ -291,7 +291,6 @@ function submitReport() {
     const date = document.getElementById("hospitalDate").value;
     const penghantar = document.getElementById("penghantarHospital").value;
 
-    // Validation
     if (!date) {
         alert("❌ Sila isi Tarikh");
         return;
@@ -306,7 +305,7 @@ function submitReport() {
         console.log("📤 Laporan dalam hantar...");
         
         const reportData = {
-            source: "hospital",
+            source: "hospital",  // ⭐ IMPORTANT - tells Apps Script which handler to use
             date,
             penghantar,
             staffData: getHospitalStaff(),
@@ -316,23 +315,22 @@ function submitReport() {
             kerjaTambahan: document.getElementById("kerjaTambahan").value || ""
         };
 
-        console.log("📋 Data yang dihantar:", reportData);
-        
+        console.log("📋 Data yang dihantar:", reportData); // ✅ SEE WHAT YOU'RE SENDING
+
         fetch("https://script.google.com/macros/s/AKfycbxTq8tU5qEnc4ulfvypphkY0ziyLpZkNnJPsZH9RBaQ27iDqWl0RAMVHlf4BqK0Z2gwwA/exec", {
             method: "POST",
             headers: {
-                "Content-Type": "text/plain"  // ⬅️ Key change
+                "Content-Type": "text/plain"
             },
             body: JSON.stringify(reportData)
         })
-        .then(res => res.text())  // ⬅️ Use .text()
+        .then(res => res.text())
         .then(result => {
             console.log("✅ Response:", result);
             try {
                 const parsed = JSON.parse(result);
                 if (parsed.status === "success") {
                     alert("✅ Laporan Berjaya Dihantar ke Server");
-                    // location.reload();
                 } else {
                     alert("❌ Error: " + parsed.message);
                 }
