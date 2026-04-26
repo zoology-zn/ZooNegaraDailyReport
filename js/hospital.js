@@ -318,30 +318,25 @@ function submitReport() {
         console.log("📋 Data yang dihantar:", reportData); // ✅ SEE WHAT YOU'RE SENDING
 
         fetch("https://script.google.com/macros/s/AKfycbxTq8tU5qEnc4ulfvypphkY0ziyLpZkNnJPsZH9RBaQ27iDqWl0RAMVHlf4BqK0Z2gwwA/exec", {
-            method: "POST",
-            headers: {
-                "Content-Type": "text/plain"
-            },
-            body: JSON.stringify(reportData)
-        })
-        .then(res => res.text())
-        .then(result => {
-            console.log("✅ Response:", result);
-            try {
-                const parsed = JSON.parse(result);
-                if (parsed.status === "success") {
-                    alert("✅ Laporan Berjaya Dihantar ke Server");
-                } else {
-                    alert("❌ Error: " + parsed.message);
-                }
-            } catch (e) {
-                alert("✅ Data telah dihantar");
-            }
-        })
-        .catch(error => {
-            console.error("❌ Error:", error);
-            alert("❌ Gagal menghantar laporan:\n" + error.message);
-        });
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(reportData)
+})
+.then(res => res.json())
+.then(parsed => {
+    console.log("✅ Response:", parsed);
+    if (parsed.status === "success") {
+        alert("✅ Laporan Berjaya Dihantar ke Server");
+    } else {
+        alert("❌ Error: " + parsed.message);
+    }
+})
+.catch(error => {
+    console.error("❌ Error:", error);
+    alert("❌ Gagal menghantar laporan:\n" + error.message);
+});
     }
 }
 
