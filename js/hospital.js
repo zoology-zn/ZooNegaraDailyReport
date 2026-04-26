@@ -316,9 +316,7 @@ function submitReport() {
         };
 
         console.log("📋 Data yang dihantar:", reportData); // ✅ SEE WHAT YOU'RE SENDING
-
-        const scriptUrl = "https://script.google.com/macros/s/AKfycbyNBmZRWWFtMvja_03TDnZhvrn6hvNeuqreSl_KvTYz1vg_IdvsIt-D8ghJFkanwBvrrw/exec";
-
+            
 fetch("https://script.google.com/macros/s/AKfycbyNBmZRWWFtMvja_03TDnZhvrn6hvNeuqreSl_KvTYz1vg_IdvsIt-D8ghJFkanwBvrrw/exec", {
     method: "POST",
     body: JSON.stringify(reportData)
@@ -331,20 +329,19 @@ fetch("https://script.google.com/macros/s/AKfycbyNBmZRWWFtMvja_03TDnZhvrn6hvNeuq
         const parsed = JSON.parse(result);
 
         if (parsed.status === "success") {
-            alert("✅ Laporan Berjaya Dihantar ke Server");
+            alert("✅ Laporan Hospital berjaya dihantar");
         } else {
-            alert("❌ Error: " + parsed.message);
+            alert("❌ Error: " + (parsed.message || "Unknown error"));
         }
     } catch (e) {
-        console.log("Parse error:", e);
-        alert("⚠️ Response diterima tapi format tak jelas");
+        alert("⚠️ Server response received but not JSON");
+        console.log(result);
     }
 })
-.catch(error => {
-    console.error("❌ Fetch Error:", error);
-    alert("❌ Gagal menghantar laporan:\n" + error.message);
+.catch(err => {
+    console.error("Fetch error:", err);
+    alert("❌ Gagal hantar laporan: " + err.message);
 });
-
     }
 }
 
