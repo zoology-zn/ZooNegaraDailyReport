@@ -317,14 +317,17 @@ function submitReport() {
 
         console.log("📋 Data yang dihantar:", reportData); // ✅ SEE WHAT YOU'RE SENDING
 
-        fetch("https://script.google.com/macros/s/AKfycbyNBmZRWWFtMvja_03TDnZhvrn6hvNeuqreSl_KvTYz1vg_IdvsIt-D8ghJFkanwBvrrw/exec", {
+        const scriptUrl = "https://script.google.com/macros/s/AKfycbyNBmZRWWFtMvja_03TDnZhvrn6hvNeuqreSl_KvTYz1vg_IdvsIt-D8ghJFkanwBvrrw/exec";
+
+fetch(scriptUrl, {
     method: "POST",
     headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "text/plain"
     },
     body: JSON.stringify(reportData)
 })
-.then(res => res.json())
+
+.then(res => res.text())
 .then(parsed => {
     console.log("✅ Response:", parsed);
     if (parsed.status === "success") {
