@@ -319,27 +319,32 @@ function submitReport() {
 
         const scriptUrl = "https://script.google.com/macros/s/AKfycbyNBmZRWWFtMvja_03TDnZhvrn6hvNeuqreSl_KvTYz1vg_IdvsIt-D8ghJFkanwBvrrw/exec";
 
-fetch(scriptUrl, {
+fetch("https://script.google.com/macros/s/AKfycbyNBmZRWWFtMvja_03TDnZhvrn6hvNeuqreSl_KvTYz1vg_IdvsIt-D8ghJFkanwBvrrw/exec", {
     method: "POST",
-    headers: {
-        "Content-Type": "text/plain"
-    },
     body: JSON.stringify(reportData)
 })
-
 .then(res => res.text())
-.then(parsed => {
-    console.log("✅ Response:", parsed);
-    if (parsed.status === "success") {
-        alert("✅ Laporan Berjaya Dihantar ke Server");
-    } else {
-        alert("❌ Error: " + parsed.message);
+.then(result => {
+    console.log("RAW RESPONSE:", result);
+
+    try {
+        const parsed = JSON.parse(result);
+
+        if (parsed.status === "success") {
+            alert("✅ Laporan Berjaya Dihantar ke Server");
+        } else {
+            alert("❌ Error: " + parsed.message);
+        }
+    } catch (e) {
+        console.log("Parse error:", e);
+        alert("⚠️ Response diterima tapi format tak jelas");
     }
 })
 .catch(error => {
-    console.error("❌ Error:", error);
+    console.error("❌ Fetch Error:", error);
     alert("❌ Gagal menghantar laporan:\n" + error.message);
 });
+
     }
 }
 
