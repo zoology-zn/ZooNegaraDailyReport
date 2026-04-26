@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌿 Enrichment Centre Attendance</title>
+
+<link rel="stylesheet" href="css/enrichment.css">
+
+   
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ========================================
+             HEADER SECTION
+             ======================================== -->
+        <header class="page-header">
+            <h1>Zoo Negara Malaysia</h1>
+            <p>Sistem Pengurusan Laporan Seksyen - Enrichment Centre</p>
+        </header>
+
+        <!-- ========================================
+             👥 STAFF ATTENDANCE SECTION
+             ======================================== -->
+        <div class="card">
+            <h2>Kehadiran Kakitangan Enrichment Centre</h2>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Tarikh</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label>Penghantar</label>
+                    <select id="penghantarDropBox" required>
+                        <option value="">Pilih Staff</option>
+                        <option>Fikri</option>
+                        <option>Auni</option>
+                        <option>Amirah</option>
+                        <option>Syakirin</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <div id="enrichmentTable"></div>
+            </div>
+        </div>
+
+        <!-- ========================================
+             ENRICHMENT REPORT SECTION
+             ======================================== -->
+        <div class="card">
+            <h2>Laporan Enrichment</h2>
+
+            <div class="table-responsive">
+                <table id="enrichmentReportTable">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Spesis</th>
+                            <th>Seksyen</th>
+                            <th>Jenis Enrichment</th>
+                            <th>Catatan</th>
+                            <th>Tindakan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+            <button class="btn btn-add" onclick="addEnrichmentRow()">
+                Tambah Enrichment
+            </button>
+        </div>
+
+        <!-- ========================================
+             WORK REPORT SECTION
+             ======================================== -->
+        <div class="card">
+            <h2>Laporan Kerja</h2>
+
+            <h3>Kerja Lebih Masa (OT)</h3>
+            <div class="checkbox-group">
+                <input type="checkbox" id="otCheck" onchange="toggleOTInput()">
+                <label for="otCheck">Ya, ada kerja lebih masa</label>
+            </div>
+
+            <input 
+                type="text" 
+                id="otCatatan" 
+                placeholder="Contoh: penyediaan peralatan enrichment, penyusunan kandang, dll"
+                disabled
+            >
+
+            <h3>📋 Lain-lain Hal</h3>
+            <textarea 
+                id="lainLain" 
+                placeholder="Contoh: &#10;1. Pencarian bahan untuk aktiviti enrichment&#10;2. Kerja pembersihan kandang&#10;3. Penyediaan makanan khusus"
+                oninput="autoNumberList(this)"
+            ></textarea>
+        </div>
+
+        <!-- ========================================
+             SUBMIT SECTION
+             ======================================== -->
+        <button class="btn btn-main" onclick="submitEnrichment()">
+            Hantar Laporan
+        </button>
+
+    </div>
+
+    <!-- ========================================
+         JAVASCRIPT - DATA & FUNCTIONS
+         ======================================== -->
+         <script src="js/enrichment.js"></script>
+
+
+</body>
+</html>
