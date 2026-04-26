@@ -429,7 +429,7 @@ function confirmSubmit() {
   const confirmMessage = "🔒 Pastikan semua data sudah benar sebelum mengirim?\n\nData tidak boleh diubah setelah pengiriman.";
   if (!confirm(confirmMessage)) return;
 
-  const scriptUrl = "https://script.google.com/macros/s/AKfycbyDheUq_VGJtD3SWiWIq2dGioSRji6G-myUTpD8x2CvmS2vrv0ema_tgdvqsz3jqAR15Q/exec";
+  const scriptUrl = "https://script.google.com/macros/s/AKfycbyNBmZRWWFtMvja_03TDnZhvrn6hvNeuqreSl_KvTYz1vg_IdvsIt-D8ghJFkanwBvrrw/exec";
 
   fetch(scriptUrl, {
     method: "POST",
