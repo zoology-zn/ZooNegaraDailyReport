@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Zoo Negara - Sistem Laporan</title>
+    
+<link rel="stylesheet" href="css/hospital.css">
+
+   </head>
+<body>
+
+    <div class="container">
+
+        <!-- ========================================
+             HEADER SECTION
+             ======================================== -->
+        <header>
+            <h1>🏥Zoo Negara Malaysia</h1>
+            <p>📋Sistem Pengurusan Laporan Hospital</p>
+        </header>
+
+        <!-- ========================================
+             SECTION 1: KEHADIRAN KAKITANGAN
+             ======================================== -->
+        <div class="card">
+            <h3>🧑‍⚕️Kehadiran Kakitangan</h3>
+            
+            <div class="header-grid">
+                <div class="form-group">
+                    <label>Tarikh <span class="required">*</span></label>
+                    <input type="date" id="hospitalDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Penghantar <span class="required">*</span></label>
+                    <select id="penghantarHospital" required>
+                        <option value="">Pilih Staff</option>
+                        <option>Dr. Suhailiza</option>
+                        <option>Dr. Cassie</option>
+                        <option>Dr. Qurratul</option>
+                        <option>Dr. Houris</option>
+                        <option>Syirin</option>
+                        <option>Ainina</option>
+                        <option>Hardiff</option>
+                        <option>Najihah</option>
+                        <option>Parwaiz</option>
+                        <option>Haslina</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <div id="hospitalStaffTable"></div>
+            </div>
+        </div>
+
+        <!-- ========================================
+             SECTION 2: LAPORAN RAWATAN
+             ======================================== -->
+        <div class="card">
+            <h3>💉Laporan Rawatan</h3>
+            
+            <div class="table-container">
+                <table id="rawatanTable">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Seksyen</th>
+                            <th>Spesis</th>
+                            <th>Jantina</th>
+                            <th>ID / House Name</th>
+                            <th>Kategori</th>
+                            <th>Catatan</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <button class="btn btn-add" onclick="addRawatanRow()">➕ Tambah Rawatan</button>
+        </div>
+
+        <!-- ========================================
+             SECTION 3: LAPORAN HAIWAN
+             ======================================== -->
+        <div class="card">
+            <h3>🐘Laporan Haiwan</h3>
+            
+            <div class="table-container">
+                <table id="haiwanTable">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Jenis</th>
+                            <th>Spesies</th>
+                            <th>Jantina</th>
+                            <th>ID / House Name</th>
+                            <th>Dari / Ke</th>
+                            <th>Catatan</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <button class="btn btn-add" onclick="addHaiwanRow()">➕ Tambah Rekod</button>
+        </div>
+
+        <!-- ========================================
+             SECTION 4: LAPORAN POST MORTEM
+             ======================================== -->
+        <div class="card">
+            <h3>⚠️Laporan Post Mortem</h3>
+            
+            <div class="table-container">
+                <table id="postMortemTable">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Seksyen</th>
+                            <th>Spesis</th>
+                            <th>Jantina</th>
+                            <th>ID / House Name</th>
+                            <th>Kategori</th>
+                            <th>Catatan</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <button class="btn btn-add" onclick="addPostMortemRow()">➕ Tambah Rekod</button>
+        </div>
+
+        <!-- ========================================
+             SECTION 5: LAPORAN KERJA
+             ======================================== -->
+        <div class="card">
+            <h3>📝Laporan Kerja Tambahan</h3>
+            
+            <div class="form-group">
+                <label>Catatan Kerja Harian</label>
+                <textarea id="laporanKerja" 
+                    placeholder="Contoh:&#10;1. Suntikan antibiotik&#10;2. Pemeriksaan luka&#10;3. Rawatan susulan" 
+                    oninput="autoNumberKerja(this)"></textarea>
+            </div>
+        </div>
+
+        <!-- ========================================
+             SUBMISSION SECTION
+             ======================================== -->
+        <div class="spacer">
+            <button class="btn btn-submit" onclick="submitReport()">✅ Hantar Laporan</button>
+        </div>
+
+    </div>
+
+<script src="js/hospital.js"></script>
+
+
+</body>
+</html>
