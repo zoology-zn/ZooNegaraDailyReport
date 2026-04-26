@@ -312,7 +312,7 @@ function submitReport() {
             rawatanData: getRawatanData(),
             haiwanData: getHaiwanData(),
             postMortemData: getPostMortemData(),
-            kerjaTambahan: document.getElementById("kerjaTambahan").value || ""
+            kerjaTambahan: document.getElementById("laporanKerja").value || ""
         };
 
         console.log("📋 Data yang dihantar:", reportData); // ✅ SEE WHAT YOU'RE SENDING
