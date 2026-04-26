@@ -366,6 +366,7 @@
       const section = document.getElementById("section").value;
       const submitter = document.getElementById("submitter").value;
       const cuaca = document.getElementById("cuaca").value;
+      const bencanaAlam = document.getElementById("bencanaAlam").value;
 
       if (!date || !section || !submitter || !cuaca) {
         alert("❌ Sila lengkapkan: Tarikh, Seksyen, Penghantar, dan Cuaca.");
