@@ -1,0 +1,266 @@
+
+        /* ========================================
+           CSS VARIABLES & THEME
+           ======================================== */
+        :root {
+            --primary: #3498db;
+            --primary-dark: #2980b9;
+            --secondary: #7cc4ff;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --bg: #f0f2f5;
+            --card-bg: #ffffff;
+            --text: #2c3e50;
+            --text-light: #666666;
+            --border: #dcdde1;
+            --border-light: #ecf0f1;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        /* ========================================
+           RESET & BASE STYLES
+           ======================================== */
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 10px;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           LAYOUT & CONTAINER
+           ======================================== */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* ========================================
+           HEADER SECTION
+           ======================================== */
+        header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 0;
+            color: var(--primary-dark);
+        }
+
+        header p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin: 5px 0 0;
+        }
+
+        /* ========================================
+           CARD COMPONENT
+           ======================================== */
+        .card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            border-left: 6px solid var(--secondary);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* ========================================
+           TYPOGRAPHY
+           ======================================== */
+        h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        /* ========================================
+           FORM GROUPS & INPUTS
+           ======================================== */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input[type="date"],
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #fff;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="date"]:focus,
+        input[type="text"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: monospace;
+        }
+
+        /* ========================================
+           GRID LAYOUT
+           ======================================== */
+        .header-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .header-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========================================
+           TABLE STYLES
+           ======================================== */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 800px;
+            background: white;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            color: var(--primary-dark);
+        }
+
+        th,
+        td {
+            border: 1px solid var(--border-light);
+            padding: 12px 8px;
+            text-align: center;
+        }
+
+        td:first-child {
+            font-weight: 600;
+            background: #f8f9fa;
+        }
+
+        /* ROW STATUS COLORS */
+        .row-incomplete {
+            background: #fff5f5;
+        }
+
+        .row-complete {
+            background: #f0fff4;
+        }
+
+        /* ========================================
+           BUTTON STYLES
+           ======================================== */
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-add {
+            background: var(--primary);
+            color: white;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .btn-add:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-submit {
+            background: var(--success);
+            color: white;
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .btn-submit:hover {
+            background: #229954;
+        }
+
+        /* ========================================
+           UTILITY CLASSES
+           ======================================== */
+        .spacer {
+            margin-bottom: 50px;
+        }
+
+        .required {
+            color: var(--danger);
+            font-weight: bold;
+        }
