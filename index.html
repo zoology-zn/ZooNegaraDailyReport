@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Harian Zoo - Sistem Pengurusan</title>
+
+  <link rel="stylesheet" href="css/main.css">
+
+  </head>
+
+<body>
+
+  <div class="main-container">
+
+    <!-- ============================================
+         HEADER SECTION
+         ============================================ -->
+    <div class="header">
+      <h1>🦁Zoo Negara Malaysia</h1>
+      <p>📋Sistem Pengurusan Laporan Harian</p>
+    </div>
+
+    <!-- ============================================
+         1. KEHADIRAN KAKITANGAN (STAFF ATTENDANCE)
+         ============================================ -->
+    <div class="big-card">
+      <h2>📊Kehadiran Kakitangan</h2>
+
+      <div class="grid-2">
+        <div>
+          <label>Tarikh:</label>
+          <input type="date" id="date" required>
+        </div>
+
+        <div>
+          <label>Seksyen:</label>
+          <select id="section" onchange="updateSubmitterAndTable()" required>
+            <option value="">Pilih Seksyen</option>
+            <option value="Children's World">Children's World</option>
+            <option value="Show Amphitheatre">Show Amphitheatre</option>
+            <option value="Bear Complex">Bear Complex</option>
+            <option value="Reptile">Reptile</option>
+            <option value="Savannah">Savannah</option>
+            <option value="Mammal Kingdom 1">Mammal Kingdom 1</option>
+            <option value="Ape Centre">Ape Centre</option>
+            <option value="Carnivore">Carnivore</option>
+            <option value="Mammal Kingdom 2">Mammal Kingdom 2</option>
+            <option value="Gajah">Gajah</option>
+            <option value="Bird House">Bird House</option>
+            <option value="Hoof">Hoof</option>
+            <option value="Panda Complex">Panda Complex</option>
+            <option value="Biodiversity Garden">Biodiversity Garden</option>
+            <option value="Aquarium">Aquarium</option>
+            <option value="Indian Gaur/Capybara">Indian Gaur/Capybara</option>
+            <option value="Holding Centre">Holding Centre</option>
+            <option value="Enrichment Centre">Enrichment Centre</option>
+            <option value="Hospital">Hospital</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Penghantar:</label>
+          <select id="submitter" required>
+            <option value="">Pilih Seksyen Dahulu</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Cuaca:</label>
+          <select id="cuaca" required>
+            <option value="">Pilih Cuaca</option>
+            <option>Cerah</option>
+            <option>Mendung</option>
+            <option>Hujan</option>
+            <option>Ribut</option>
+            <option>Panas Terik</option>
+          </select>
+        </div>
+      </div>
+
+        <div>
+          <label>Bencana Alam:</label>
+          <select id="bencanaAlam" required>
+            <option value="">Pilih Bencana Alam</option>
+            <option>Banjir</option>
+            <option>Pokok Tumbang</option>
+            <option>Kebakaran</option>
+            <option>Gempa Bumi</option>
+          </select>
+        </div>
+
+      <div class="table-wrapper">
+        <div id="staffTableDiv"></div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         2. LAPORAN HAIWAN & RAWATAN (ANIMAL & TREATMENT REPORTS)
+         ============================================ -->
+    <div class="big-card">
+      <h2>🐾Laporan Haiwan & Rawatan</h2>
+
+      <!-- LAPORAN HAIWAN -->
+      <div class="card">
+        <h3>Laporan Haiwan</h3>
+        <div id="animalReportContainer"></div>
+        <button class="add-btn-soft" onclick="addAnimalEntry()">+ Tambah Laporan Haiwan</button>
+      </div>
+
+      <!-- RAWATAN HAIWAN -->
+      <div class="card">
+        <h3>Rawatan Haiwan</h3>
+        <div id="treatmentContainer"></div>
+        <button class="add-btn-soft" onclick="addTreatmentEntry()">+ Tambah Rawatan</button>
+      </div>
+    </div>
+
+    <!-- ============================================
+         3. LAPORAN SEKSYEN (SECTION REPORTS)
+         ============================================ -->
+    <div class="big-card">
+      <h2>🏢Laporan Seksyen</h2>
+
+      <!-- UTILITI & PERSEKITARAN -->
+      <div class="card">
+        <h3>Utiliti & Persekitaran</h3>
+        <div class="grid-2">
+          <div>
+            <label>Bacaan Kabel Elektrik</label>
+            <input type="text" id="bacaanElektrik" placeholder="Contoh: 12345 kWh">
+          </div>
+
+          <div>
+            <div class="checkbox-group" style="margin-top: 25px; margin-bottom: 8px;">
+              <input type="checkbox" id="disinfektan">
+              <label>Disinfektan</label>
+            </div>
+            <input type="text" id="catatanSeksyen" placeholder="Kandang / Laluan">
+          </div>
+
+          <div class="span-2-desktop" style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <div class="checkbox-group">
+              <input type="checkbox" id="fecalSubmit">
+              <label>Penghantaran Fecal</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="meetingSection">
+              <label>Mesyuarat Seksyen</label>
+            </div>
+          </div>
+
+          <div class="span-2-desktop">
+            <label>Kerosakan</label>
+            <textarea id="kerosakanSeksyen" oninput="autoNumberList(this)" placeholder="Senaraikan kerosakan..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUMBER MAKANAN -->
+      <div class="card">
+        <h3>🌿Sumber Makanan</h3>
+        <div class="grid-2">
+          <div>
+            <label>Timbangan Rumput (KG)</label>
+            <input type="number" id="timbanganRumput" step="any" min="0">
+          </div>
+          <div>
+            <label>Timbangan Daun (KG)</label>
+            <input type="number" id="timbanganDaun" step="any" min="0">
+          </div>
+        </div>
+      </div>
+
+      <!-- AKTIVITI HARIAN -->
+      <div class="card">
+        <h3>🎭Aktiviti Harian</h3>
+        <div class="grid-2">
+          <div class="checkbox-group">
+            <span style="font-weight: 600;">Animal Show:</span>
+            <label style="margin:0;"><input type="checkbox" id="showPagi"> Pagi</label>
+            <label style="margin:0;"><input type="checkbox" id="showPetang"> Petang</label>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="interactiveShow">
+            <label>Interaktif</label>
+          </div>
+
+          <div class="span-2-desktop" style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+            <div class="checkbox-group">
+              <input type="checkbox" id="enrichment" onchange="toggleEnrichmentAnimal()">
+              <label>Enrichment</label>
+            </div>
+            <input type="text" id="enrichmentAnimal" placeholder="Nama Haiwan" style="display: none; width: 200px;">
+          </div>
+        </div>
+      </div>
+
+      <!-- LAWATAN & PENGURUSAN -->
+      <div class="card">
+        <h3>🚶Lawatan & Pengurusan</h3>
+        <div class="grid-2">
+          <div>
+            <label>Kategori Lawatan</label>
+            <select id="lawatanKategori">
+              <option value="">Pilih Kategori</option>
+              <option>Pengawai / HOD / VIP</option>
+              <option>Volunteer</option>
+              <option>Program CSR</option>
+              <option>Pengambaran / Temuduga</option>
+            </select>
+          </div>
+          <div>
+            <label>Catatan Lawatan</label>
+            <input type="text" id="lawatanCatatan" placeholder="Nama / Agensi">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         4. LAPORAN KERJA (WORK REPORTS)
+         ============================================ -->
+    <div class="big-card">
+      <h2>⚙️Laporan Kerja</h2>
+
+      <!-- KERJA TABLE -->
+      <div class="table-wrapper">
+        <table class="kerjaTable">
+          <thead>
+            <tr>
+              <th>Kerja</th>
+              <th style="width: 60px; text-align: center;">Status</th>
+              <th>Catatan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ROW 1: TABUR KAPUR -->
+            <tr>
+              <td>Tabur Kapur / Garam</td>
+              <td style="text-align: center;">
+                <input type="checkbox" id="kerja1" onchange="toggleKerjaInput(1)">
+              </td>
+              <td>
+                <input type="text" id="catatan_kerja1" class="kerjaInput" disabled placeholder="Contoh: Kawasan kandang A / sekitar laluan">
+              </td>
+            </tr>
+
+            <!-- ROW 2: PEMBERIAN GARAM -->
+            <tr>
+              <td>Pemberian Garam (Rock Salt)</td>
+              <td style="text-align: center;">
+                <input type="checkbox" id="kerja2" onchange="toggleKerjaInput(2)">
+              </td>
+              <td>
+                <input type="text" id="catatan_kerja2" class="kerjaInput" disabled placeholder="Contoh: Gajah / Rusa – lokasi kandang">
+              </td>
+            </tr>
+
+            <!-- ROW 3: KAWALAN HAIWAN PEROSAK -->
+            <tr>
+              <td>Kawalan Haiwan Perosak</td>
+              <td style="text-align: center;">
+                <input type="checkbox" id="kerja3" onchange="toggleKerjaInput(3)">
+              </td>
+              <td>
+                <input type="text" id="catatan_kerja3" class="kerjaInput" disabled placeholder="Contoh: Tikus / Burung – lokasi perangkap">
+              </td>
+            </tr>
+
+            <!-- ROW 4: PEMOTONGAN RUMPUT -->
+            <tr>
+              <td>Pemotongan Rumput / Trim Pokok</td>
+              <td style="text-align: center;">
+                <input type="checkbox" id="kerja4" onchange="toggleKerjaInput(4)">
+              </td>
+              <td>
+                <input type="text" id="catatan_kerja4" class="kerjaInput" disabled placeholder="Contoh: Kawasan padang / sekitar kandang">
+              </td>
+            </tr>
+
+            <!-- ROW 5: PENCUCIAN KOLAM -->
+            <tr>
+              <td>Pencucian Kolam / Filter</td>
+              <td style="text-align: center;">
+                <input type="checkbox" id="kerja5" onchange="toggleKerjaInput(5)">
+              </td>
+              <td>
+                <input type="text" id="catatan_kerja5" class="kerjaInput" disabled placeholder="Contoh: Kolam A – cuci filter / tukar air">
+              </td>
+            </tr>
+
+            <!-- ROW 6: PERHATIAN KHAS HAIWAN -->
+            <tr>
+              <td>Perhatian Khas Haiwan</td>
+              <td style="text-align: center;">
+                <input type="checkbox" id="kerja6" onchange="toggleKerjaInput(6)">
+              </td>
+              <td>
+                <input type="text" id="catatan_kerja6" class="kerjaInput" disabled placeholder="Contoh: Haiwan lemah / perubahan tingkah laku">
+              </td>
+            </tr>
+
+            <!-- ROW 7: KERJA LEBIH MASA -->
+            <tr>
+              <td>Kerja Lebih Masa / Luar</td>
+              <td style="text-align: center;">
+                <input type="checkbox" id="kerja7" onchange="toggleKerjaInput(7)">
+              </td>
+              <td>
+                <input type="text" id="catatan_kerja7" class="kerjaInput" disabled placeholder="Contoh: OT – pembersihan kandang / kerja luar – pemindahan haiwan">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- LAIN-LAIN HAL -->
+      <div class="card" style="margin-top: 20px;">
+        <h3>📝Lain-lain Hal</h3>
+        <textarea id="lainLainKerja" oninput="autoNumberList(this)" placeholder="Contoh:Penghantaran telur,pasir dll"></textarea>
+      </div>
+    </div>
+
+    <!-- ============================================
+         5. SUBMIT BUTTONS
+         ============================================ -->
+    <div class="submit-center">
+      <button class="submit-btn-green" onclick="prepareSubmit()">📤Sediakan Penghantaran</button>
+      <button id="confirmBtn" class="submit-btn-green confirm" style="display: none;" onclick="confirmSubmit()">✅Sahkan Hantar</button>
+    </div>
+
+<script src="js/main.js"></script>
+ 
+</body>
+
+</html>
