@@ -317,7 +317,7 @@ function submitReport() {
 
         console.log("📋 Data yang dihantar:", reportData); // ✅ SEE WHAT YOU'RE SENDING
 
-        fetch("https://script.google.com/macros/s/AKfycbyDheUq_VGJtD3SWiWIq2dGioSRji6G-myUTpD8x2CvmS2vrv0ema_tgdvqsz3jqAR15Q/exec", {
+        fetch("https://script.google.com/macros/s/AKfycbyNBmZRWWFtMvja_03TDnZhvrn6hvNeuqreSl_KvTYz1vg_IdvsIt-D8ghJFkanwBvrrw/exec", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
