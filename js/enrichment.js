@@ -293,12 +293,14 @@ sendToGoogleSheets(reportData);
                 const kerja = document.getElementById(`kerja_${i}`).value;
                 const cuti = document.getElementById(`cuti_${i}`).value;
 
-                staffData.push({
-                    name: staff,
-                    status: status,
-                    kerjaType: kerja,
-                    cutiType: cuti
-                });
+               if (status) {
+    staffData.push({
+        name: staff,
+        status: status,
+        kerjaType: kerja,
+        cutiType: cuti
+    });
+}
             });
 
             return staffData;
@@ -317,7 +319,13 @@ sendToGoogleSheets(reportData);
                 const cells = row.querySelectorAll("td input, td select");
 
                 // Skip if row is completely empty
-                if (cells[0].value === "" && cells[1].value === "" && cells[2].value === "") {
+                if (
+    cells[0].value === "" &&
+    cells[1].value === "" &&
+    cells[2].value === "" &&
+    cells[3].value === ""
+) return;
+ {
                     return;
                 }
 
@@ -367,7 +375,7 @@ function sendToGoogleSheets(reportData) {
             const parsed = JSON.parse(result);
             if (parsed.status === "success") {
                 alert("✅ Laporan Enrichment berjaya dihantar!");
-                // location.reload();
+                location.reload();
             } else {
                 alert("❌ Gagal hantar data: " + (parsed.message || "Unknown error"));
             }
