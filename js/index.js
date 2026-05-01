@@ -22,7 +22,7 @@
       "Holding Centre": ["Hazlie", "Nizar", "Ariff"],
     };
 
-    const cutiTypes = ["RD", "PH", "X", "AL", "MC", "RL", "EL", ""];
+    const cutiTypes = ["RD", "PH", "X", "AL", "MC", "RL", "EL", "CE"];
     const kerjaTypes = ["Kerja Penuh", "Separuh Hari", "WRD", "WPH"];
     const zooSections = [
       "Children's World", "Show Amphitheatre", "Bear Complex", "Reptile", "Savannah",
