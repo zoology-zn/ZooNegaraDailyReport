@@ -330,6 +330,7 @@ fetch("https://script.google.com/macros/s/AKfycbw6wZPeiRtH92pgt_Lry-vjhvxRi_Uumv
 
         if (parsed.status === "success") {
             alert("✅ Laporan Hospital berjaya dihantar");
+                location.reload();
         } else {
             alert("❌ Error: " + (parsed.message || "Unknown error"));
         }
